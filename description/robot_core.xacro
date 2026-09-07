@@ -17,9 +17,15 @@
     <color rgba="1.0 0.0 0.0 1.0"/>
 </material>
 
+
+<!-- BASE LINK-->
+
 <link name="base_link">
 
   </link>
+
+
+<!--CHASSIS LINK-->
 
 <joint name="chassis_joint" type="fixed">
     <parent link="base_link"/>
@@ -37,6 +43,41 @@
     </visual>
   </link>
 
+
+  <!--LEFT WHEEL LINK-->
+  <joint name="left_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="left wheel"/>
+    <origin xyz="0 0.175 0" rpy="-${pi/2} 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+
+  <link name="left wheel">
+    <visual>
+      <geometry>
+        <cylinder length="0.04" radius="0.05"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+    <!--RIGHT WHEEL LINK--> 
+
+    <joint name="right_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="right wheel"/>
+    <origin xyz="0 -0.175 0" rpy="${pi/2} 0 0"/>
+    <axis xyz="0 0 -1"/>
+  </joint>  
+
+    <link name="right wheel">
+        <visual>
+        <geometry>
+            <cylinder length="0.04" radius="0.05"/>
+        </geometry>
+        <material name="red"/>
+        </visual>
 
 
 
