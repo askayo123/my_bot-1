@@ -127,7 +127,7 @@
         </geometry>
     </collision>
     <xacro:inertial_sphere mass="0.5" radius="0.05">
-        <origin xyz="1.5 0 0"/>
+        <origin xyz="3 0 0"/>
     </xacro:inertial_sphere>
 </link> 
 
