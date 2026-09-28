@@ -52,11 +52,11 @@
     <xacro:inertial_box mass="1.0" x="0.3" y="0.3" z="0.15">
         <origin xyz="0.15 0 0.075"/>
     </xacro:inertial_box>
-  </link>
+</link>
 
-  <gazebo reference="chassis">
+<gazebo reference="chassis">
     <material>Gazebo/White</material>
-    </gazebo>
+</gazebo>
 
 
   <!--LEFT WHEEL LINK-->
@@ -116,7 +116,7 @@
 </link>
 
 <gazebo reference="right wheel">
-    <material>gazebo/red<material>
+    <material>gazebo/red</material>
 </gazebo>
 
 <!--FRONT WHEEL LINK-->
@@ -143,9 +143,8 @@
     </xacro:inertial_sphere>
 </link> 
 
-<gazebo refenece="front_wheel">
+<gazebo reference="front_wheel">
     <material>gazebo/blue</material>
-    </gazerbo>
-    
+</gazebo>
 
 </robot>
