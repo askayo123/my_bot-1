@@ -12,6 +12,7 @@ def generate_launch_description():
     package_share = get_package_share_directory('my_bot')
     ros_gz_share = get_package_share_directory('ros_gz_sim')
     xacro_file = os.path.join(package_share, 'description', 'robot.urdf.xacro')
+    rviz_config = os.path.join(package_share, 'config', 'robot_view.rviz')
     robot_description = xacro.process_file(xacro_file).toxml()
 
     gazebo = IncludeLaunchDescription(
@@ -41,7 +42,23 @@ def generate_launch_description():
             '/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist',
             '/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry',
             '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
+            '/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model',
         ],
+        output='screen',
+    )
+
+    odometry_tf = Node(
+        package='my_bot',
+        executable='odom_tf_broadcaster.py',
+        parameters=[{'use_sim_time': True}],
+        output='screen',
+    )
+
+    rviz = Node(
+        package='rviz2',
+        executable='rviz2',
+        arguments=['-d', rviz_config],
+        parameters=[{'use_sim_time': True}],
         output='screen',
     )
 
@@ -66,5 +83,7 @@ def generate_launch_description():
         gazebo,
         robot_state_publisher,
         gazebo_bridge,
+        odometry_tf,
+        rviz,
         spawn_robot,
     ])
