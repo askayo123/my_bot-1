@@ -12,6 +12,7 @@ def generate_launch_description():
     package_share = get_package_share_directory('my_bot')
     ros_gz_share = get_package_share_directory('ros_gz_sim')
     xacro_file = os.path.join(package_share, 'description', 'robot.urdf.xacro')
+    world_file = os.path.join(package_share, 'worlds', 'empty.world')
     rviz_config = os.path.join(package_share, 'config', 'robot_view.rviz')
     robot_description = xacro.process_file(xacro_file).toxml()
 
@@ -20,7 +21,7 @@ def generate_launch_description():
             os.path.join(ros_gz_share, 'launch', 'gz_sim.launch.py')
         ),
         launch_arguments={
-            'gz_args': 'empty.sdf -r',
+            'gz_args': f'{world_file} -r',
             'on_exit_shutdown': 'true',
         }.items(),
     )
@@ -43,6 +44,7 @@ def generate_launch_description():
             '/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry',
             '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
             '/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model',
+            '/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan',
         ],
         output='screen',
     )
