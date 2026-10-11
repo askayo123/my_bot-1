@@ -7,5 +7,7 @@
 
     <xacro:include filename="laser.xacro"/>
 
+    <xacro:include filename="camera.xacro"/>
+
 
 </robot>
