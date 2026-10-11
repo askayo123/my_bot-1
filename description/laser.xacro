@@ -15,7 +15,7 @@
 
         <visual>
             <geometry>
-                <cylinder length="0.05" radius="0.02"/>
+                <cylinder length="0.05" radius="0.5"/>
             </geometry>
             <material name="red"/>
         </visual>
