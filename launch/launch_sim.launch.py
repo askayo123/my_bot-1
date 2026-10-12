@@ -45,6 +45,7 @@ def generate_launch_description():
             '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
             '/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model',
             '/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan',
+            '/camera/image@sensor_msgs/msg/Image[gz.msgs.Image',
         ],
         output='screen',
     )
